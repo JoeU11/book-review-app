@@ -1,11 +1,11 @@
-export default function Navbar() {
+export default function Navbar(props) {
   return (
     <nav>
       <h2 id="nav-title">BookRater</h2>
       <div id="nav-link-container">
-        <a className="nav-link" href="/">Home</a>
-        <a className="nav-link" href="/login">login</a>
-        <a className="nav-link" href="/logout">logout</a>
+        {/* <a className="nav-link" href="/">Home</a> */}
+        {props.loggedIn || <button className="nav-link" onClick={props.setShowLoginModal}>login</button>}
+        {props.loggedIn && <button className="nav-link" onClick={props.handleLogOut}>logout</button>}
       </div>
     </nav>
   )

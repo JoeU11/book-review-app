@@ -57,6 +57,9 @@ nav {
 .nav-link {
   color: white;
   margin-left: 7px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 body {
@@ -80,6 +83,52 @@ body {
 
 #main {
   margin-top: 15px;
+}
+
+.modal-background {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1000;
+}
+
+.modal-main {
+  position: fixed;
+  background: #282c34;
+  color: white;
+  width: 50%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1em;
+}
+
+.modal-main button.close {
+  font-size: 2em;
+  background: red;
+  color: white;
+  border: none;
+  position: absolute;
+  top: 0em;
+  right: 0.2em;
+  cursor: pointer;
+}
+
+.login-info-row {
+  display: grid;
+  grid-template-columns:
+    clamp(90px, 18%, 190px) minmax(0, 1fr) clamp(85px, 17%, 10px);
+
+  min-height: clamp(10px, 16vh, 10px);
+  margin-bottom: clamp(20px, 5vh, 10px);
+
+  border-radius: 4px;
+
 }
 
 #title-search {

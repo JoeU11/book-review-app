@@ -4,10 +4,13 @@ import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from "./components/navbar.js"
 import Main from "./components/main.js"
+import LoginModal from "./components/loginModal.js"
 
 function App() {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(true)
+  const [showLoginModal, setShowLoginModal] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const getBooks = () => {
     console.log("getting books")
@@ -20,6 +23,20 @@ function App() {
     })
   }
 
+  const handleClose = () => {
+    setShowLoginModal(false)
+  }
+
+  const login = () => {
+    console.log("logging in")
+    setShowLoginModal(false)
+    setLoggedIn(true)
+  }
+
+  const handleLogOut = () => {
+    setLoggedIn(false)
+  }
+
   useEffect(getBooks, [])
 
   if (loading) return (
@@ -27,7 +44,8 @@ function App() {
   )
   else return (
     <div className="App">
-      <Navbar />
+      <Navbar {...{ setShowLoginModal, loggedIn, handleLogOut }} />
+      <LoginModal show={showLoginModal} onClose={handleClose} login={login} />
       <Router>
         <Routes>
           <Route path="/" element={<Main {...{ books }} />} />
