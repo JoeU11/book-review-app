@@ -22,12 +22,15 @@ function App() {
 
   useEffect(getBooks, [])
 
-  return (
+  if (loading) return (
+    <p>loading books</p>
+  )
+  else return (
     <div className="App">
       <Navbar />
       <Router>
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route path="/" element={<Main {...{ books }} />} />
         </Routes>
       </Router>
     </div>
