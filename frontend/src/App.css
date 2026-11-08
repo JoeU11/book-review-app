@@ -32,7 +32,29 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+nav {
+  background-color: #444a58;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
+
+#nav-title {
+  margin-left: 15px;
+}
+
+#nav-link-container {
+  padding: 25px 0;
+  margin-right: 15px;
+}
+
+.nav-link {
+  color: white;
+  margin-left: 7px;
 }
