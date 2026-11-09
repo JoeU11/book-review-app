@@ -6,11 +6,11 @@ export default function Modal(props) {
           <h3>Account Information</h3>
           <div class="login-info-row">
             <label>Username</label>
-            <input id="name" type="text" />
+            <input class="login-field" id="name" type="text" />
           </div>
           <div class="login-info-row">
             <label>Password</label>
-            <input id="password" type="text" />
+            <input class="login-field" id="password" type="password" />
           </div>
           <button onClick={props.login}>Log In</button>
           <button className="close" type="button" onClick={props.onClose}>

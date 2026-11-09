@@ -57,6 +57,7 @@ nav {
 .nav-link {
   color: white;
   margin-left: 7px;
+  font-size: 20px;
   background: none;
   border: none;
   cursor: pointer;
@@ -122,13 +123,17 @@ body {
 .login-info-row {
   display: grid;
   grid-template-columns:
-    clamp(90px, 18%, 190px) minmax(0, 1fr) clamp(85px, 17%, 10px);
+    clamp(90px, 50%, 190px) minmax(0, 1fr) clamp(85px, 17%, 190px);
 
   min-height: clamp(10px, 16vh, 10px);
   margin-bottom: clamp(20px, 5vh, 10px);
 
   border-radius: 4px;
 
+}
+
+.login-field {
+  max-width: 250px;
 }
 
 #title-search {
