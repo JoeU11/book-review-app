@@ -10,7 +10,7 @@ function App() {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(true)
   const [showLoginModal, setShowLoginModal] = useState(false)
-  const [loggedIn, setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(!!localStorage.token)
 
   const getBooks = () => {
     console.log("getting books")
@@ -27,13 +27,23 @@ function App() {
     setShowLoginModal(false)
   }
 
-  const login = () => {
+  const login = (name, password) => {
     console.log("logging in")
-    setShowLoginModal(false)
-    setLoggedIn(true)
+    var loginParams = { "name": name, "password": password }
+    console.log(loginParams)
+    axios.post("http://localhost:3001/login", loginParams).then(response => {
+      axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.token;
+      localStorage.setItem("token", response.data.token);
+      setShowLoginModal(false)
+      setLoggedIn(true)
+    }).catch(error => {
+      console.log(error)
+    })
+
   }
 
   const handleLogOut = () => {
+    localStorage.removeItem('token')
     setLoggedIn(false)
   }
 
